@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Острова 3</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="styles/aurora.css" />
+<link rel="stylesheet" href="styles/madpanel.css" />
+<link rel="stylesheet" href="styles/slpanel.css" />
+<link rel="stylesheet" href="styles/audioplay.css" />
+<link rel="stylesheet" href="ostrova3.css" />
+    <link rel="icon" type="Images/x-icon" href="atsicon.ico"/>    
+</head>
+<body>
+<div id="particles-js"></div>
+<div class="bubble bubble-blue" style="left: 0; -webkit-animation-delay: 1s"></div>
+<div class="bubble bubble-yellow" style="left: 200px; -webkit-animation-delay: 2s"></div>
+<div class="bubble bubble-red" style="left: 400px; -webkit-animation-delay: 3s"></div>
+<div class="bubble bubble-green" style="left: 600px; -webkit-animation-delay: 4s"></div>
+<div class="bubble bubble-purple" style="left: 800px; -webkit-animation-delay: 5s"></div>
+<div class="bubble bubble-yellow" style="left: 1000px; -webkit-animation-delay: 6s"></div>
+<div class="bubble bubble-blue" style="left: 1200px; -webkit-animation-delay: 7s"></div>
+<div class="bubble bubble-yellow" style="left: 1400px; -webkit-animation-delay: 8s"></div>
+<div class="bubble bubble-blue" style="left: 1600px; -webkit-animation-delay: 9s"></div>
+<div class="bubble bubble-yellow" style="left: 1800px; -webkit-animation-delay: 10s"></div>
+    
+<div class="container-fluid text-center">
+<div class="row">
+<div class="col-3">
+
+<div class="player" id="player">
+    <div class="details">
+        <div class="now-playing">Слушаем x из y</div>
+        <div class="track-art"></div>
+        <div class="track-name">Название</div>
+        <div class="track-artist">Исполнитель</div>
+    </div>
+    <div class="buttons">
+        <div class="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
+        <div class="playpause-track" onclick="playpauseTrack()"><i class="fa fa-play-circle fa-5x"></i></div>
+        <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
+    </div>
+    <div class="slider_container">
+        <div class="current-time">00:00</div>
+        <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+        <div class="total-duration">00:00</div>
+    </div>
+    <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+        <i class="fa fa-volume-up"></i>
+    </div>
+</div>
+
+</div>  
+<div class="col-3">      
+
+<div class="obektmus">
+<p style="font-weight: bold;">Алеутские острова</p>
+<p>Алеу́тские острова́ — архипелаг вулканического происхождения, 
+образующий дугу от юго-западной оконечности полуострова Аляска к основанию полуострова Камчатка. 
+</p>
+<div id="myNav3" class="overlaypr"><a href="javascript:void(0)" class="closebtn" onclick="closeNav3()">&times;</a>
+<div class="overlaypr-content">
+<p class="pstob1">
+Острова ограничивают с юга Берингово море. Ныне находятся в составе американского штата Аляска.
+Архипелаг состоит из 110&nbsp;островов и множества скал. Общая площадь составляет 17,7&nbsp;тыс.&nbsp;км². 
+Алеутские острова протянулись дугой по 52-54°&nbsp;с.&nbsp;ш. на 1740&nbsp;км.
+Архипелаг насчитывает 25&nbsp;действующих вулканов, в том числе вулкан Шишалдина (2861&nbsp;м) 
+(наиболее высокий вулкан на о. Унимак), вулкан Всевидова (2149&nbsp;м), 
+Танага (1806&nbsp;м), Большой Ситкин (1740&nbsp;м), Горелый (1573&nbsp;м), Канага (1307&nbsp;м), вулкан Сегула (1153&nbsp;м).
+Многие из них извергались в 20&nbsp;веке.
+</p><p class="pstob2">
+В архипелаге 4&nbsp;группы островов: Лисьи, Андреяновские, Крысьи и Ближние. Алеутские острова являются вершинами 
+подводного хребта, поднимающегося со дна Алеутской впадины Тихого океана более чем на 10&nbsp;км (считая с подводной частью). 
+<!-- В тектоническом отношении соответствуют одноимённой вулканической островной гряде.  -->
+Большинство островов представляет собой вулканические конусы, нередко покрытые снегом.  
+На крупных островах – участки приморских низменностей и удобные бухты.
+</p><p class="pstob3">
+Во время Второй Камчатской экспедиции (1733-1743&nbsp;гг.), проводившейся под руководством Витуса Беринга, в 1741&nbsp;г. были обнаружены 
+острова, названные Алеутскими по наименованию проживающего на этой территории народа – алеутов.
+Название народу дали русские, Г.А.&nbsp;Менщиков указывал на происхождение названия от алеутского слова аллитхух – община, но 
+наиболее правдоподобной кажется связь с чукотским словом алиут – островитяне. 
+</p>
+</div>
+</div>
+<span style="font-size:18px;cursor:pointer;color: #336c33;" 
+    onclick="openNav3()">Описание&nbsp;<i class="fa-sharp-duotone fa-solid fa-house" style='color: blueviolet'></i></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="myNavsl3" class="overlayslvn"><a href="javascript:void(0)" class="closebtn" onclick="closeNavsl3()"> &times; </a>
+<div class="overlayslvn-content">
+<div class="kartin">
+<a target="_blank" href="aleut/aleutk1.jpg"><img src="aleut/aleutk1.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk2.jpg"><img src="aleut/aleutk2.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk3.jpg"><img src="aleut/aleutk3.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk4.jpg"><img src="aleut/aleutk4.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk5.jpg"><img src="aleut/aleutk5.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk6.jpg"><img src="aleut/aleutk6.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk7.jpg"><img src="aleut/aleutk7.jpg" alt="Нет фото"></a>
+<a target="_blank" href="aleut/aleutk8.jpg"><img src="aleut/aleutk8.jpg" alt="Нет фото"></a>
+</div>
+
+<div class="vspliv13">
+<div class="row">
+<div class="col-6" style="background-color: #c7edb7">      
+До открытия европейцами Алеутские острова и окружающие их воды изобиловали пушным и морским зверем. Сейчас уже лисица, морская выдра и 
+сивуч почти истреблены. В прибрежных водах водятся морж, тюлени, треска, палтус, сельдь. <!-- На скалах – птичьи базары. -->
+Главный населённый пункт – Адак (на одноимённом острове). Открыты в середине 18&nbsp;века русскими мореходами (Михаил Неводчиков, 
+Андреян Толстых, Степан Глотов), в их изучении большую роль сыграли русские экспедиции П.К.&nbsp;Креницына и М.Д.&nbsp;Левашова&nbsp;(1768–1769), 
+О.Е.&nbsp;Коцебу&nbsp;(1815–1818), Ф.П.&nbsp;Литке&nbsp;(1826–1829). До 1867&nbsp;г. принадлежали России, затем были проданы (вместе с Аляской) США.
+<br>
+</div>
+<div class="col-6" style="background-color: #c7edd7; display: flex; flex-wrap: wrap;">
+<a class="child" target="_blank" href="aleut/aleut1.jpg"><img src="aleut/aleut1.jpg" alt="Нет фото"></a>
+<a class="child" target="_blank" href="aleut/aleut2.jpg"><img src="aleut/aleut2.jpg" alt="Нет фото"></a>
+<a class="child" target="_blank" href="aleut/aleut3.jpg"><img src="aleut/aleut3.jpg" alt="Нет фото"></a>
+<a class="child" target="_blank" href="aleut/aleut4.jpg"><img src="aleut/aleut4.jpg" alt="Нет фото"></a>  
+<a class="child" target="_blank" href="aleut/aleut5.jpg"><img src="aleut/aleut5.jpg" alt="Нет фото"></a>
+<a class="child" target="_blank" href="aleut/aleut6.jpg"><img src="aleut/aleut6.jpg" alt="Нет фото"></a>
+<a class="child" target="_blank" href="aleut/aleut7.jpg"><img src="aleut/aleut7.jpg" alt="Нет фото"></a>
+<a class="child" target="_blank" href="aleut/aleut8.jpg"><img src="aleut/aleut8.jpg" alt="Нет фото"></a>    
+</div></div></div>
+
+</div>
+</div>
+<span style="font-size:18px;cursor:pointer"
+onclick="openNavsl3()">Карты&nbsp;<i class="fa-sharp-duotone fa-regular fa-calendar" style='color: greenyellow'></i></span>
+</div>    
+</div>
+<!-- ------------------------------------------------   -->
+<div class="col-6">      
+<div class="obekt"><span style="font-weight: bold;">Новая Гвинея<br></span>
+Но́вая Гвине́я — остров на западе Тихого океана, второй по величине в мире (после Гренландии).
+Западная часть острова является территорией Индонезии, а восточную занимает государство Папуа — Новая Гвинея.    
+С точки зрения физической географии остров относится к Океании, однако с точки зрения политической и 
+экономической географии его, как правило, относят к Азии.
+<br>
+<div id="myNav2" class="overlay"><a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
+<div class="overlay-content">
+<p class="pstob1">
+По направлению с северо-запада на юго-восток длина острова составляет около 2400&nbsp;км, а с севера на юг в его 
+самой широкой части — 650&nbsp;км. Площадь острова составляет 786&nbsp;тыс.&nbsp;км², что немного больше территории 
+Турции, но в 2,75&nbsp;раза меньше Гренландии.
+Принадлежащая Индонезии часть острова, которую в политико-географическом плане обычно относят к Азии, 
+чуть больше — 420&nbsp;тыс.&nbsp;км² против&nbsp;365&nbsp;тыс.&nbsp;км² восточной, папуасской. 
+Протяжённость границы между двумя государствами составляет 824&nbsp;км, она проходит строго с севера на юг по 141-му 
+меридиану восточной долготы, затем по излучине реки Флай, затем по&nbsp;141°01′10″&nbsp;восточной долготы.
+<!-- Вдоль всего острова с северо-запада на юго-восток тянется Центральный хребет Новой Гвинеи. Большая часть горных 
+массивов острова являются его составляющими. Так, его западную часть в основном образует горный массив Маоке, 
+самый высокий пик которого под именем Пунчак-Джая достигает 4884 м над уровнем моря. Это самая высокая в мире гора, 
+расположенная на острове.  -->
+<!-- В восточной части находятся горы Бисмарка, наивысшая точка которых — гора Вильгельм — 
+насчитывает 4509 м.  -->
+<!-- На склонах наиболее высоких гор располагаются ледники, часто встречаются потухшие вулканы и 
+плодородные плоскогорья на высотах не менее 1490 м. -->
+<!-- С севера от Центрального хребта располагается низменность, занятая речными долинами Мамберамо, Сепик, Раму и Маркем. 
+На севере центральной части острова эти долины ограничивает ещё одна горная система высотой, как правило, не более 3500 м. 
+На крайнем северо-западе острова расположены крупные полуострова — в основном низменный Бомберай и более возвышенный Доберай. 
+Южнее Центрального хребта располагается обширная болотистая равнина, которую пересекают русла таких рек, как Флай, Биан, Дигул, 
+Мапи, Пулау и Лоренц. На юго-востоке хребет Оуэн-Стэнли длиной 320 км образует ещё один полуостров, отделяющий Соломоново море 
+на севере от Кораллового моря на юге. -->
+<!-- Самой длинной рекой острова является Сепик (длина составляет 1125 км), другие крупные реки — Флай (1120 км), 
+Мамберамо (700 км), Дигул (600 км). Крупнейшее озеро острова — Марри. -->
+</p><p class="pstob2" style="background-color: #c7edd7; display: flex; flex-wrap: wrap;">
+В глубокой древности Новая Гвинея была соединена с Австралией. Раздел произошёл в результате повышения всемирного уровня моря 
+сравнительно недавно. Этим объясняется наличие на Новой Гвинее многочисленных живущих в Австралии видов сумчатых. Заселение 
+человеком произошло как минимум 45&nbsp;тысяч&nbsp;лет до&nbsp;н.&nbsp;э. из Азии. Впоследствии от переселенцев произошли более тысячи 
+папуасско-меланезийских племён. 
+    На территории Новой Гвинеи находится древнее земледельческое поселение Кука, показывающее изолированное развитие сельского 
+хозяйства на протяжении 7−10 тысячелетий и входящее в Список Всемирного наследия ЮНЕСКО.
+    <a target="_blank" href="novgvin/novgvin1.jpg"><img src="novgvin/novgvin1.jpg" alt="Нет фото"></a>
+    <a target="_blank" href="novgvin/novgvin2.jpg"><img src="novgvin/novgvin2.jpg" alt="Нет фото"></a>
+    <a target="_blank" href="novgvin/novgvin3.jpg"><img src="novgvin/novgvin3.jpg" alt="Нет фото"></a>
+    <a target="_blank" href="novgvin/novgvin4.jpg"><img src="novgvin/novgvin4.jpg" alt="Нет фото"></a>
+</p>
+</div>
+</div>
+<!-- <button class="btn btn-primary bg-transparent"><a href="novgvin/novgvin.html" target="_blank" title="Фото (автопрокрутка)">Фотографии</a></button> -->
+<span style="font-size:18px;cursor:pointer;color: #336c33;" 
+    onclick="openNav2()">Описание&nbsp;<i class="fa-sharp-duotone fa-solid fa-bell" style='color: red'></i></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="myNavsl2" class="overlayslvn"><a href="javascript:void(0)" class="closebtn" onclick="closeNavsl2()"> &times; </a>
+<div class="overlayslvn-content">
+<div class="kartin">
+<a target="_blank" href="novgvin/novgvink1.jpg"><img src="novgvin/novgvink1.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink2.jpg"><img src="novgvin/novgvink2.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink3.jpg"><img src="novgvin/novgvink3.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink4.jpg"><img src="novgvin/novgvink4.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink5.jpg"><img src="novgvin/novgvink5.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink6.jpg"><img src="novgvin/novgvink6.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink7.jpg"><img src="novgvin/novgvink7.jpg" alt="Нет фото"></a>
+<a target="_blank" href="novgvin/novgvink8.jpg"><img src="novgvin/novgvink8.jpg" alt="Нет фото"></a>
+</div>
+<p class="vspliv12">
+    Отсутствие крупных, пригодных к одомашниванию зверей на острове мешало развитию 
+земледелия и делало невозможным скотоводство. Это способствовало сохранению первобытно-общинного строя на больших территориях 
+Новой Гвинеи вплоть до сегодняшних дней. Разнообразие языков и множество племён было обусловлено изолированностью людей друг 
+от друга в силу гористого ландшафта и отсутствия технических средств, способствующих общению и культурному обмену.
+    Первыми европейцами в Новой Гвинеи были испанские и португальские мореплаватели в начале XVI&nbsp;века. В 1526&nbsp;году на северо-западном 
+побережье острова высадился португалец дон Жоржи ди Менезиш, согласно легенде, он нарёк открытые им земли Ilhas dos Papuas — 
+«острова Папуа», от малайского слова, означающего «курчавый»; по-видимому, имелись в виду жёсткие курчавые волосы меланезийских аборигенов.
+Позднее, в 1545&nbsp;году, мимо острова по пути с Молуккских островов в Мексику проследовал испанец Иньиго Ортис де Ретес и 
+назвал его «Новая Гвинея», поскольку побережье напоминало ему берега африканской Гвинеи, которые он видел раньше. 
+Возможно, он обратил внимание и на то, что Гвинея в Африке и вновь открытая им земля вблизи Австралии находились в 
+противоположных точках на глобусе, и именно это обстоятельство побудило его дать новой земле такое название.
+</p>
+</div>
+</div>
+<span style="font-size:18px;cursor:pointer" onclick="openNavsl2()">Карты&nbsp;<i class="fa-brands fa-font-awesome" style='color: yellowgreen'></i></span>
+
+</div>
+</div></div></div>
+
+<div class="container-fluid text-center">
+<div class="row">
+<div class="col-6">
+<!-- ------------------------------------------------   -->
+<div class="obektvn"><span style="font-weight: bold;">Каролинские острова<br></span>
+Кароли́нские острова́ (англ. Caroline Islands, исп. Islas Carolinas; названы по имени испанского короля Карла&nbsp;II) — 
+архипелаг в западной части Тихого океана, в Микронезии. 
+После обретения независимости от США на островах архипелага образовалось два государства: Федеративные Штаты Микронезии и Палау.
+К моменту начала колонизации островов европейцами местное население находилось на стадии разложения первобытно-общинного 
+строя. Общество подразделялось на ряд неравноправных по своему положению социальных групп. На некоторых островных группах 
+возникли крупные территориальные объединения, хотя государства ещё созданы не были.
+<br>
+<div id="myNav4" class="overlaypr"><a href="javascript:void(0)" class="closebtn" onclick="closeNav4()">&times;</a>
+<div class="overlaypr-content">
+<p class="pstob1">
+  Западная часть Каролинских островов была открыта в 1525&nbsp;году португальскими мореплавателями Диогу ди Роша и Гомишем ди Сикейра, 
+восточная — в 1529&nbsp;году испанским мореплавателем Альваро де Сааведра. По другой версии, их открыл вместе с Маршалловыми 
+в 1526&nbsp;году испанец Алонсо де Саласар. Отдельные острова архипелага были исследованы и подробно описаны в 1828&nbsp;году 
+русским мореплавателем Ф.П.&nbsp;Литке.
+  Все крупные острова вулканического происхождения (высота до 791&nbsp;м), окружены коралловыми рифами. Острова западной группы 
+относятся к системе островных дуг и испытывают медленный устойчивый подъём; острова восточной группы сформированы на 
+океаническом ложе. Имеются месторождения фосфатов органического происхождения.
+</p><p class="pstob2" style="background-color: #bdd9e8; display: flex; flex-wrap: wrap;">
+  Каролинские острова являются областью зарождения тайфунов (в среднем 25&nbsp;в&nbsp;год), случающихся во все времена года (чаще — в 
+период с июля по ноябрь, с максимумом в сентябре). На вулканических островах — вечнозелёные тропические леса из панданусов. 
+На склонах гор — влажные вечнозелёные леса с древовидными папоротниками. Бамбук образует их верхнюю границу. На засушливых 
+склонах — саванны. На коралловых островах преобладают кокосовая пальма и панданус.  
+    <a target="_blank" href="carolin/carolin1.jpg"><img src="carolin/carolin1.jpg" alt="Нет фото"></a>
+    <a target="_blank" href="carolin/carolin2.jpg"><img src="carolin/carolin2.jpg" alt="Нет фото"></a>
+    <a target="_blank" href="carolin/carolin3.jpg"><img src="carolin/carolin3.jpg" alt="Нет фото"></a>
+    <a target="_blank" href="carolin/carolin4.jpg"><img src="carolin/carolin4.jpg" alt="Нет фото"></a>
+</p>
+</div>
+</div>
+<!-- <button class="btn btn-primary bg-transparent"><a href="carolin/carolin.html" target="_blank" title="Фото (автопрокрутка)">Фотографии</a></button> -->
+<span style="font-size:18px;cursor:pointer;color: #336c33;" 
+    onclick="openNav4()">Описание&nbsp;<i class="fa-sharp-duotone fa-solid fa-user" style='color: blue'></i></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="myNavsl4" class="overlaysl">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNavsl4()"> &times; </a>
+<div class="overlaysl-content">
+    <div class="kartin">
+<a target="_blank" href="carolin/carolink1.jpg"><img src="carolin/carolink1.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink2.jpg"><img src="carolin/carolink2.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink3.jpg"><img src="carolin/carolink3.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink4.jpg"><img src="carolin/carolink4.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink5.jpg"><img src="carolin/carolink5.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink6.jpg"><img src="carolin/carolink6.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink7.jpg"><img src="carolin/carolink7.jpg" alt="Нет фото"></a>
+<a target="_blank" href="carolin/carolink8.jpg"><img src="carolin/carolink8.jpg" alt="Нет фото"></a>
+    </div>
+<p class="vspliv12">
+    Архипелаг состоит из 936&nbsp;отдельных или собранных в группы вулканических островов и атоллов, расположенных 
+между 1—10°&nbsp;с.&nbsp;ш. и 131—163°&nbsp;в.&nbsp;д. Площадь суши около 1160&nbsp;км².
+    Основное население Каролинских островов — небольшие этнические группы микронезийцев, говорящие на различных языках 
+малайско-полинезийской семьи. Официальный язык английский.     
+</p>
+</div>
+</div>
+<span style="font-size:18px;cursor:pointer" onclick="openNavsl4()">Карты&nbsp;<i class="fa-brands fa-bluesky" style='color: yellow'></i></span>
+</div>
+</div>  
+<div class="col-6">
+<!-- ------------------------------------------------   -->            
+<div class="obektvn2"><span style="font-weight: bold;">Французская Полинезия<br></span>
+Францу́зская Полине́зия — заморское сообщество и составная часть Франции, расположенная в центре южной части 
+Тихого океана. Граничит на западе с водами Островов Кука, на северо-западе — с Республикой Кирибати, на севере, 
+востоке и юге — с нейтральными тихоокеанскими водами, на юго-востоке — с водами Питкэрна.
+Включает архипелаги: острова Общества, острова Туамоту, Маркизские острова, острова Тубуаи, отдельно выделяют 
+острова Гамбье, которые находятся возле Туамоту, фактически являясь обособленной частью Туамоту.
+Политико-административный центр — город Папеэте на острове Таити (крупнейший остров Французской Полинезии, 1&nbsp;тыс.&nbsp;км²).
+<br>
+<div id="myNav5" class="overlay"><a href="javascript:void(0)" class="closebtn" onclick="closeNav5()">&times;</a>
+<div class="overlay-content">
+<p class="pstob1" style="font-size: 15px;">
+Первое слово заморского сообщества обозначает принадлежность к Франции. Второе слово — происходит от тихоокеанского 
+региона Полинезия, половину которого оно занимает. Название «Полинезия» (буквально — «многоостровье») искусственно 
+образовано в XVI&nbsp;веке из древнегреческих слов πολύς — «много» и νῆσος — «остров»; окончание&nbsp;-ия обычно для названий 
+стран и территорий. Современное название территории появилось примерно во второй половине или в конце XIX века, 
+когда территория стала частью Франции.
+Острова Французской Полинезии имеют либо вулканическое, либо коралловое происхождение. Вулканическими являются большинство 
+островов Общества и Тубуаи, острова Гамбье и Маркизские; коралловые атоллы образуют архипелаг Туамоту и входят 
+в состав некоторых других островных групп.
+Вулканические острова гористы. Высшая точка Таити (и всей Французской Полинезии) — гора Орохена — поднимается на 2241&nbsp;м 
+над уровнем моря. Коралловые острова обычно возвышаются над уровнем океана всего на несколько метров, окружены рифами.
+На вулканических островах — вулканические почвы. На атоллах — пески.
+Речная сеть развита только на островах вулканического происхождения. Реки там текут в узких и глубоких долинах, изобилуют 
+водопадами. На островах Таити и Хуахине имеются небольшие озёра. На коралловых островах рек нет.
+<!-- Острова вулканического происхождения резко отличаются от коралловых атоллов по своей растительности. На наветренных склонах 
+вулканических островов от берегов до вершин гор поднимаются густые тропические леса, состоящие из вечнозелёных пород деревьев, 
+которые перемежаются с плантациями кокосовых пальм, бананов и других культур. На подветренных склонах господствует травянистая 
+растительность. Коралловые острова покрыты зарослями кокосовых пальм. -->
+</p><p class="pstob2" style="font-size: 15px;">
+  Полинезийцы стали селиться на островах нынешней Французской Полинезии в первые века н.&nbsp;э. Предположительно, миграция произошла с 
+островов Самоа. Сначала были заселены Маркизские острова и острова Общества. С островов Общества полинезийцы в конце І или в 
+начале ІІ тысячелетия н.&nbsp;э. мигрировали на острова Туамоту и Тубуаи.
+  К моменту появления на островах европейцев среди населения нынешней Французской Полинезии самым развитым в социально-экономическом 
+отношении был народ, населявший остров Таити — там во второй половине XVIII&nbsp;века возникли раннеклассовые государства, 
+а с 1797&nbsp;года, одно из них, королевство, возглавляемое династией Помаре, начало объединять под своей властью местные 
+государственные образования Таити, а потом — распространять свою власть на другие острова Французской Полинезии.
+  Первым открытым европейцами островом был Пука-Пука в архипелаге Туамоту (Магеллан, 1521). Маркизские острова были 
+открыты в 1595&nbsp;году Менданьей, Таити — в&nbsp;1606&nbsp;году Педро Фернандес де Киросом, Тубуаи — в 1777&nbsp;году Джеймсом Куком, 
+Гамбье — в 1797&nbsp;году Уилсоном.
+  В 1946&nbsp;году Французская Полинезия получила статус заморской территории Франции. Все уроженцы островов стали гражданами Франции.
+</p>
+</div>
+</div>
+<!-- <button class="btn btn-primary bg-transparent"><a href="frpolin/frpolin.html" target="_blank" title="Фото (автопрокрутка)">Фотографии</a></button> -->
+<span style="font-size:18px;cursor:pointer;color: #336c33;" 
+    onclick="openNav5()">Описание&nbsp;<i class="fa-brands fa-docker" style='color: orange'></i></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="myNavsl5" class="overlaysl">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNavsl5()"> &times; </a>
+<div class="overlaysl-content">
+    <div class="kartin">
+<a class="chisml" target="_blank" href="frpolin/frpolink1.jpg"><img src="frpolin/frpolink1.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink2.jpg"><img src="frpolin/frpolink2.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink3.jpg"><img src="frpolin/frpolink3.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink4.jpg"><img src="frpolin/frpolink4.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink5.jpg"><img src="frpolin/frpolink5.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink6.jpg"><img src="frpolin/frpolink6.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink7.jpg"><img src="frpolin/frpolink7.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink8.jpg"><img src="frpolin/frpolink8.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink9.jpg"><img src="frpolin/frpolink9.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink10.jpg"><img src="frpolin/frpolink10.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink11.jpg"><img src="frpolin/frpolink11.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink12.jpg"><img src="frpolin/frpolink12.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolink13.jpg"><img src="frpolin/frpolink13.jpg" alt="Нет фото"></a>
+
+<a class="chisml" target="_blank" href="frpolin/frpolin1.jpg"><img src="frpolin/frpolin1.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolin2.jpg"><img src="frpolin/frpolin2.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolin3.jpg"><img src="frpolin/frpolin3.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolin4.jpg"><img src="frpolin/frpolin4.jpg" alt="Нет фото"></a>
+<a class="chisml" target="_blank" href="frpolin/frpolin5.jpg"><img src="frpolin/frpolin5.jpg" alt="Нет фото"></a>
+</div>
+<p class="vspliv12" style="font-size: 16px;">
+В 1963&nbsp;году для ядерных испытаний Франции были выбраны атоллы Муруроа и Фангатауфа, где вплоть до 28 декабря 1995 года проводились такие испытания.
+С 2004&nbsp;года Французская Полинезия получила статус заморского сообщества.
+Французская Полинезия делится на 5&nbsp;административных подразделений: Наветренные острова, Подветренные острова 
+(оба находятся на островах Общества), Туамоту-Гамбье, Маркизские острова, острова Острал (Тубуаи) и 48&nbsp;коммун.    
+</p>
+</div>
+</div>
+<span style="font-size:18px;cursor:pointer"
+onclick="openNavsl5()">
+Карты <i class="fa-brands fa-stack-overflow" style='color: green'></i></span>
+</div>
+</div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="styles/particles.min.js"></script>
+<script src="styles/app.js"></script>
+<script src="styles/madpanel.js"></script>    
+<script src="styles/slpanel.js"></script>    
+<script src="styles/audioplay.js"></script>    
+</body>
+</html>
