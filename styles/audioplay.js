@@ -43,6 +43,18 @@ let track_list = [
     image: "music/pic04.jpg",
     path: "music/namnado.mp3",
   },
+  {
+    name: "Классный",
+    artist: "",
+    image: "music/pic05.jpg",
+    path: "music/klasniy.mp3",
+  },
+  {
+    name: "Кошки-мышки",
+    artist: "",
+    image: "music/pic06.jpg",
+    path: "music/koshkimishki.mp3",
+  },
 ];
 
 function random_bg_color() {
